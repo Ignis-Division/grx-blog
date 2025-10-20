@@ -1,13 +1,24 @@
 ---
-layout: base.njk
-title: Home
+layout: layouts/base.njk
+title: G blog
 ---
-<p class="tag">ramblings, drawings, digital decay</p>
-<ul class="posts">
-  {% for post in collections.posts | reverse %}
-  <li>
-    <a href="{{ post.url }}">{{ post.data.title }}</a>
-    <span class="date">{{ post.date | date("yyyy-LL-dd") }}</span>
-  </li>
-  {% endfor %}
-</ul>
+
+<main class="container">
+  <header>
+    <h1>⛧ Obscuranode Archives ⛧</h1>
+    <p class="subtitle">Fragments, theories, and transmissions from the void.</p>
+  </header>
+
+  <section class="posts">
+    <h2>Latest Posts</h2>
+    <div class="post-list">
+      {% for post in collections.post | reverse %}
+      <article class="post">
+        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+        <p>{{ post.templateContent | safe | truncate(200) }}</p>
+        <a class="read-more" href="{{ post.url }}">→ read more</a>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+</main>
