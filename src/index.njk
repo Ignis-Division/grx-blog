@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+title: Nuci’s Asylum
+---
+<p class="tag">ramblings, drawings, digital decay</p>
+<ul class="posts">
+  {% for post in collections.posts | reverse %}
+  <li>
+    <a href="{{ post.url }}">{{ post.data.title }}</a>
+    <span class="date">{{ post.date | date("yyyy-LL-dd") }}</span>
+  </li>
+  {% endfor %}
+</ul>
